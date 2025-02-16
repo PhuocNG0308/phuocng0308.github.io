@@ -1,154 +1,22 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chúc Thi Tốt - May Mắn!</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: 'Arial', sans-serif;
-            padding: 20px;
-        }
-
-        .container {
-            text-align: center;
-            max-width: 600px;
-        }
-
-        h1 {
-            color: #2c3e50;
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .lucky-cat {
-            width: 200px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .message-box {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            margin: 20px 0;
-            min-height: 100px;
-        }
-
-        .wish-button {
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2em;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .wish-button:hover {
-            transform: scale(1.05);
-            background: #ff5252;
-        }
-
-        .wish-text {
-            font-size: 1.3em;
-            color: #2c3e50;
-            line-height: 1.6;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-        }
-
-        .show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #ff6b6b;
-            pointer-events: none;
-        } 
-    </style>
+    <title>Will You Be My Valentine?</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Chúc Bạn Thi Thật Tốt! 🎉</h1>
-        <img src="https://i.pinimg.com/originals/9c/40/6f/9c406f5e9c2364b47af9fda2b641aad5.png" 
-             alt="Mèo may mắn" 
-             class="lucky-cat">
-        
-        <div class="message-box">
-            <p id="wishMessage" class="wish-text"></p>
+        <h1>Will you be my Valentine?</h1>
+        <div class="buttons">
+            <button class="yes-button" onclick="handleYesClick()">Yes</button>
+            <button class="no-button" onclick="handleNoClick()">No</button>
         </div>
-
-        <button class="wish-button" onclick="showNewWish()">
-            Nhận Lời Chúc May Mắn ✨
-        </button>
+        <div class="gif_container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">
+        </div>
     </div>
-
-    <script>
-        const wishes = [
-            "Chúc bạn tự tin như hổ, nhanh nhẹn như sóc!",
-            "Thi đâu đậu đó - Điểm cao ngất ngưởng!",
-            "Kiến thức tuôn như suối - Bình tĩnh như sư tử!",
-            "Làm bài như pháo hoa - Rực sáng khắp phòng thi!",
-            "May mắn ập đến - Câu nào cũng trúng tủ!",
-            "Đầu óc minh mẫn - Viết bài thần tốc!",
-            "Quyết tâm cao độ - Chiến thắng vẻ vang!"
-        ];
-
-        function showNewWish() {
-            const messageElement = document.getElementById('wishMessage');
-            messageElement.classList.remove('show');
-            
-            setTimeout(() => {
-                const randomIndex = Math.floor(Math.random() * wishes.length);
-                messageElement.textContent = wishes[randomIndex];
-                messageElement.classList.add('show');
-                createConfetti();
-            }, 300);
-        }
-
-        function createConfetti() {
-            for(let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                confetti.style.left = Math.random() * 100 + "%";
-                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear`;
-                confetti.style.backgroundColor = `hsl(${Math.random() * 360}deg, 70%, 60%)`;
-                document.body.appendChild(confetti);
-
-                setTimeout(() => {
-                    confetti.remove();
-                }, 3000);
-            }
-        }
-
-        // Thêm animation rơi cho confetti
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fall {
-                0% { transform: translateY(-100vh) rotate(0deg); }
-                100% { transform: translateY(100vh) rotate(360deg); }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
